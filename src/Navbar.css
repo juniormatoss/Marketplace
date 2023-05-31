@@ -2,68 +2,96 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  background-color: #3366cc;
+  background-color: #4285f4;
   color: #fff;
+  padding: 20px;
 }
 
-.navbar-logo {
+.navbar-logo img {
+  height: 40px;
+}
+
+.navbar-right {
   display: flex;
   align-items: center;
 }
 
-.logo-image {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.navbar-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-  margin-left: 10px;
-}
-
-.navbar-menu {
-  flex-grow: 1;
-  text-align: center; /* Alteração: Centralizar os itens do menu */
-}
-
-.navbar-nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.navbar-search {
   display: flex;
-  justify-content: center; /* Alteração: Centralizar os itens do menu */
+  align-items: center;
+  margin-right: 10px;
 }
 
-.nav-item {
-  margin: 0 10px; /* Alteração: Espaçamento entre os itens */
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.search-input {
+.navbar-search input {
   padding: 8px;
   font-size: 14px;
-  border-radius: 4px 0 0 4px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: none;
   width: 200px;
+  margin-right: 10px;
 }
 
-.search-button {
-  padding: 8px 16px;
-  background-color: #4285f4;
-  color: #fff;
-  border-radius: 0 4px 4px 0;
+.navbar-search button {
+  padding: 8px 12px;
+  background-color: #fff;
+  color: #4285f4;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
 }
 
-/* Restante do código do Navbar.css permanece o mesmo */
+.navbar-cart {
+  position: relative;
+  margin-left: 20px;
+}
+
+.navbar-cart button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.navbar-cart img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  color: #4285f4;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.navbar-login button {
+  padding: 8px 12px;
+  background-color: #fff;
+  color: #4285f4;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-search input {
+    width: 100%;
+  }
+}
