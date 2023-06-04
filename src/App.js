@@ -1,15 +1,20 @@
-import React from 'react';
-import './App.css';
-import Navbar from './Navbar';
-import ProductList from './ProductList';
+import React, { useState } from 'react'
+import Navbar from './Navbar'
+import ProductList from './ProductList'
 
 const App = () => {
-  return (
-    <div className="app">
-      <Navbar />
-      <ProductList />
-    </div>
-  );
-};
+  const [searchTerm, setSearchTerm] = useState('')
 
-export default App;
+  const handleSearch = event => {
+    setSearchTerm(event.target.value)
+  }
+
+  return (
+    <div>
+      <Navbar onSearch={handleSearch} />
+      <ProductList searchTerm={searchTerm} />
+    </div>
+  )
+}
+
+export default App

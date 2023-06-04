@@ -1,9 +1,9 @@
-import React from 'react';
-import logo from './logo.png';
-import cartIcon from './cart-icon.png';
-import './Navbar.css';
+import React from 'react'
+import logo from './logo.png'
+import cartIcon from './cart-icon.png'
+import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -11,8 +11,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-right">
         <div className="navbar-search">
-          <input type="text" placeholder="Search products" />
-          <button type="button">Search</button>
+          <input
+            type="text"
+            placeholder="Search products"
+            onChange={onSearch}
+          />
         </div>
         <div className="navbar-cart">
           <button type="button">
@@ -25,7 +28,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
