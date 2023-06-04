@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
 import ProductList from './ProductList'
+import { CartProvider } from './CartContext';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -10,10 +11,11 @@ const App = () => {
   }
 
   return (
-    <div>
+    <CartProvider>
       <Navbar onSearch={handleSearch} />
       <ProductList searchTerm={searchTerm} />
-    </div>
+      </CartProvider>
+    
   )
 }
 
