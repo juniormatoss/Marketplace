@@ -1,4 +1,7 @@
+// Navbar.js
+
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import logo from './logo.png';
 import cartIcon from './cart-icon.png';
 import './Navbar.css';
@@ -17,10 +20,10 @@ const Navbar = ({ onSearch }) => {
           <input type="text" placeholder="Search products" onChange={onSearch} />
         </div>
         <div className="navbar-cart">
-          <button type="button">
+          <Link to="/cart">
             <img src={cartIcon} alt="Cart" className="cart-icon" />
-            <span className="cart-count">{cartItemCount}</span>
-          </button>
+            {cartItemCount > 0 && <span className="cart-count">{cartItemCount}</span>}
+          </Link>
         </div>
         <div className="navbar-login">
           <button type="button">Login</button>
