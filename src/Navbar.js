@@ -26,7 +26,9 @@ const Navbar = ({ onSearch }) => {
           </Link>
         </div>
         <div className="navbar-login">
-          <button type="button">Login</button>
+          <Link to="/login">
+            <button type="button">Login</button>
+          </Link>
         </div>
       </div>
     </nav>

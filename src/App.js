@@ -1,16 +1,15 @@
-// App.js
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import ProductList from './ProductList';
 import Cart from './Cart';
 import { CartProvider } from './CartContext';
+import Login from './Login';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearch = event => {
+  const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
@@ -21,6 +20,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" render={() => <ProductList searchTerm={searchTerm} />} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </Router>
     </CartProvider>
