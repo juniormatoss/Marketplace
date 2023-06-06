@@ -1,5 +1,3 @@
-// Navbar.js
-
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
@@ -16,6 +14,7 @@ const Navbar = ({ onSearch }) => {
         <Link to="/">
           <img src={logo} alt="Logo" />
         </Link>
+        <span className="navbar-title">Marketplace</span>
       </div>
       <div className="navbar-right">
         <div className="navbar-search">
