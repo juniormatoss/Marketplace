@@ -19,8 +19,8 @@ const App = () => {
         <Navbar onSearch={handleSearch} />
         <Switch>
           <Route exact path="/" render={() => <ProductList searchTerm={searchTerm} />} />
-          <Route exact path="/cart" component={Cart} />
-          <Route exact path="/login" component={Login} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/login" component={Login} />
         </Switch>
       </Router>
     </CartProvider>
