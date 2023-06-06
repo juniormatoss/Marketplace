@@ -6,27 +6,34 @@ import { CartContext } from './CartContext';
 const Cart = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
 
+  const totalPrice = cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+
   return (
     <div className="cart-page">
       <h2 className="cart-title">Cart</h2>
       {cartItems.length > 0 ? (
-        <ul className="cart-items">
-          {cartItems.map((item, index) => (
-            <li key={index} className="cart-item">
-              <div className="cart-item-image">
-                <img src={item.image} alt={item.title} />
-              </div>
-              <div className="cart-item-details">
-                <h3 className="cart-item-title">{item.title}</h3>
-                <p className="cart-item-price">{item.price}</p>
-                <p className="cart-item-description">{item.description}</p>
-                <button className="remove-button" onClick={() => removeFromCart(item)}>
-                  Remove
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className="cart-items">
+            {cartItems.map((item, index) => (
+              <li key={index} className="cart-item">
+                <div className="cart-item-image">
+                  <img src={item.image} alt={item.title} />
+                </div>
+                <div className="cart-item-details">
+                  <h3 className="cart-item-title">{item.title}</h3>
+                  <p className="cart-item-price">${item.price.toFixed(2)}</p>
+                  <p className="cart-item-description">{item.description}</p>
+                  <button className="remove-button" onClick={() => removeFromCart(item)}>
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="cart-total">
+            <p>Total: ${totalPrice}</p>
+          </div>
+        </>
       ) : (
         <p className="cart-empty">Your cart is empty.</p>
       )}
