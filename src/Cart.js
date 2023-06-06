@@ -52,7 +52,7 @@ const Cart = ({ onClose }) => {
         <Link to="/" className="back-button">
           Voltar
         </Link>
-        <h2 className="cart-title">Cart</h2>
+        <h2 className="cart-title">Carrinho</h2>
         {cartItems.length > 0 ? (
           <>
             <div className="cart-items">{renderCartItems()}</div>
@@ -72,9 +72,6 @@ const Cart = ({ onClose }) => {
         ) : (
           <p className="cart-empty">Your cart is empty.</p>
         )}
-        <button className="cart-close" onClick={onClose}>
-          Close
-        </button>
       </div>
     </div>
   );
