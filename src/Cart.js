@@ -39,7 +39,7 @@ const Cart = ({ onClose }) => {
           <div className="quantity-controls">
             <button
               className="decrement-button"
-              onClick={() => handleDecrement(item)}
+              onClick={() => handleRemove(item)}
             >
               -
             </button>
