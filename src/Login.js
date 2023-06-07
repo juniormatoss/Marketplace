@@ -6,6 +6,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -15,8 +16,8 @@ const Login = () => {
       // Redirecionar para a página principal após o login bem-sucedido
       history.push('/');
     } else {
-      // Exibir uma mensagem de erro ou realizar ações adicionais para um login inválido
-      console.log('Credenciais inválidas');
+      // Exibir uma mensagem de erro para um login inválido
+      setErrorMessage('Credenciais inválidas');
     }
   };
 
@@ -24,18 +25,25 @@ const Login = () => {
     <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button type="submit">Login</button>
       </form>
     </div>
