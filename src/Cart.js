@@ -1,27 +1,34 @@
-import React, { useContext } from 'react';
-import './Cart.css';
-import { CartContext } from './CartContext';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react'
+import './Cart.css'
+import { CartContext } from './CartContext'
+import { Link, useHistory } from 'react-router-dom'
 
 const Cart = ({ onClose }) => {
-  const { cartItems, addToCart, removeFromCart, calculateTotal } = useContext(CartContext);
+  const { cartItems, addToCart, removeFromCart, calculateTotal } =
+    useContext(CartContext)
+  const history = useHistory()
 
-  const handleIncrement = (item) => {
-    addToCart(item);
-  };
+  const handleIncrement = item => {
+    addToCart(item)
+  }
 
-  const handleDecrement = (item) => {
+  const handleDecrement = item => {
     if (item.quantity > 1) {
-      removeFromCart(item);
+      const updatedItem = { ...item, quantity: item.quantity - 1 }
+      removeFromCart(updatedItem)
     }
-  };
+  }
 
-  const handleRemove = (item) => {
-    removeFromCart(item, true);
-  };
+  const handleRemove = item => {
+    removeFromCart(item, false)
+  }
+
+  const handleCheckout = () => {
+    history.push('/checkout')
+  }
 
   const renderCartItems = () => {
-    return cartItems.map((item) => (
+    return cartItems.map(item => (
       <div key={item.id} className="cart-item">
         <div className="cart-item-image">
           <img src={item.image} alt={item.title} />
@@ -30,11 +37,17 @@ const Cart = ({ onClose }) => {
           <h3 className="cart-item-title">{item.title}</h3>
           <p className="cart-item-price">{item.price}</p>
           <div className="quantity-controls">
-            <button className="decrement-button" onClick={() => handleDecrement(item)}>
+            <button
+              className="decrement-button"
+              onClick={() => handleDecrement(item)}
+            >
               -
             </button>
             <span className="quantity">{item.quantity}</span>
-            <button className="increment-button" onClick={() => handleIncrement(item)}>
+            <button
+              className="increment-button"
+              onClick={() => handleIncrement(item)}
+            >
               +
             </button>
           </div>
@@ -43,8 +56,8 @@ const Cart = ({ onClose }) => {
           </button>
         </div>
       </div>
-    ));
-  };
+    ))
+  }
 
   return (
     <div className="cart-overlay">
@@ -66,7 +79,9 @@ const Cart = ({ onClose }) => {
                 <span>Total:</span>
                 <span>{calculateTotal()}</span>
               </div>
-              <button className="checkout-button">Checkout</button>
+              <button className="checkout-button" onClick={handleCheckout}>
+                Checkout
+              </button>
             </div>
           </>
         ) : (
@@ -74,7 +89,7 @@ const Cart = ({ onClose }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart
